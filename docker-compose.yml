@@ -1,0 +1,13 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: seriesrank-db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: seriesrank123
+      MYSQL_DATABASE: seriesrank
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
